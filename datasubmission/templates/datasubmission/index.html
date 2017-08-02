@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if token %}
+<p>There's a token</p>
+<!-- TODO(nknight): do a form -->
+{% else %}
+<p>There is no token</p>
+<!-- TODO(nknight): do not a form -->
+{% endif %}
+
+{% endblock %}
