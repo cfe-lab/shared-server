@@ -17,6 +17,9 @@ class Submission(models.Model):
         return tmpl.format(self.submitter, self.date)
 
 
+def default_new_id_code():
+    return secrets.token_hex(4)
+
 class SubmissionTokenBody(models.Model):
     '''
     '''
@@ -24,7 +27,7 @@ class SubmissionTokenBody(models.Model):
         "ID Code",
         unique=True,
         max_length=32,
-        default=lambda: secrets.token_hex(4),
+       default=default_new_id_code
     )
     issued_to = models.CharField("Issued To", max_length=128)
     issued_at = models.DateTimeField("Issued At", default=timezone.now)
@@ -55,4 +58,3 @@ class SubmissionTokenBody(models.Model):
             # TODO(nknight): log the exception
             print(e)
             return None
-
