@@ -44,5 +44,6 @@ class TestTokenSubmissionBody(TestCase):
         token_body = models.SubmissionTokenBody.new(issuee)
         token_body.save()
         id_token = token.new(token_body.id_code)
-        retrieved_body = models.SubmissionTokenBody.retrieve_from_token(id_token)
+        retrieved_body = models.SubmissionTokenBody.retrieve_from_token(
+            id_token)
         self.assertEqual(token_body, retrieved_body)
