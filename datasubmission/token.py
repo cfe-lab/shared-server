@@ -13,16 +13,16 @@ def _message_digest(msg: bytes) -> str:
     key = bytes(settings.HMAC_KEY, 'utf8')
     msg_hasher = hmac.new(key, msg=msg, digestmod='sha256')
     digest = msg_hasher.digest()
-    enc_digest = base64.urlsafe_b64encode(digest)
+    enc_digest = base64.b16encode(digest)
     return str(enc_digest, 'utf8')
-    
+
 
 def _new_msg(id_code: str) -> str:
     msg_str = json.dumps({
         'c': str(id_code),
     })
     msg_bytes = bytes(msg_str, 'utf8')
-    msg_enc = base64.urlsafe_b64encode(msg_bytes)    
+    msg_enc = base64.b16encode(msg_bytes)
     msg_enc_str = str(msg_enc, 'utf8')
     return msg_enc_str
 
@@ -35,7 +35,7 @@ def _parse_id_code(msg_enc_str: str) -> typing.Optional[str]:
     '''
     try:
         msg_enc_bytes = bytes(msg_enc_str, 'utf8')
-        msg_bytes = base64.urlsafe_b64decode(msg_enc_bytes)
+        msg_bytes = base64.b16decode(msg_enc_bytes)
         msg_str = str(msg_bytes, 'utf8')
         msg = json.loads(msg_str)
         id_code = msg.get('c', None)
