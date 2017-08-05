@@ -19,6 +19,7 @@ class SubmissionForm(forms.Form):
     datafile = forms.FileField(
         label="Data File",
         help_text=_datafile_help_text,
+        required=False,
     )
     submission_token = forms.CharField(
         widget=forms.HiddenInput(),

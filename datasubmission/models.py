@@ -1,6 +1,7 @@
 import secrets
 
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 
 from . import token
@@ -32,6 +33,7 @@ class SubmissionTokenBody(models.Model):
     issued_to = models.CharField("Issued To", max_length=128)
     issued_at = models.DateTimeField("Issued At", default=timezone.now)
     used = models.BooleanField("Used", default=False)
+    filename = models.CharField("Saved As", blank=True, max_length=16)
 
     def __str__(self):
         tmpl = "issued to {} at {} {}"
@@ -45,6 +47,12 @@ class SubmissionTokenBody(models.Model):
     @property
     def token(self):
         return token.new(self.id_code)
+
+    @property
+    def token_url(self):
+        tkn = self.token
+        base = reverse('datasubmission.index')
+        return "{}?tkn={}".format(base, tkn)
 
     @classmethod
     def retrieve_from_token(cls, tkn):

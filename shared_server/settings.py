@@ -16,9 +16,11 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+# TODO(nknight): review this
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
+# TODO(nknight): Load these from env vars
 # SECURITY WARNING: keep the secret keys used in production secret!
 # These are dev/testing keys
 SECRET_KEY = 'cp6(1_vvocb4am9c9(2zv04)uuo-9m+kysls__#nc6mt*-i*$$'
@@ -28,6 +30,7 @@ HMAC_KEY = 'bybcKg6SKULoIVNdYRyufz7ZDxgvF5j/qwN0qS+zhnLU'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# TODO(nknight): what should this be?
 ALLOWED_HOSTS = []
 
 
@@ -127,3 +130,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+
+# Support person
+SUPPORT_PERSON = 'Nathaniel Knight'
+SUPPORT_EMAIL = 'nknight@cfenet.ubc.ca'
+
+# datasubmission config
+DATASUBMISSION_PATH = os.path.join(BASE_DIR, "tmpdata")
