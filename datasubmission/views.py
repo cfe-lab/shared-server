@@ -1,3 +1,5 @@
+import secrets
+
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseNotAllowed
 from django.shortcuts import render, reverse, redirect
@@ -48,12 +50,16 @@ def _handle_post(req, context, tkn_str, tkn_body):
     if not fileform.is_valid():
         return invalid
     datafile = fileform.files.get('datafile')
-    new_filename = store.save_file(datafile)
-    if new_filename is None:
-        return invalid
-    tkn_body.filename = new_filename
+    new_filename = secrets.token_hex(8)
+    store.save_file(datafile, new_filename)
+    submission = models.Submission(
+        token_body=tkn_body,
+        submitted_filename=datafile.name,
+        stored_filename=new_filename,
+    )
     tkn_body.used = True
     tkn_body.save()
+    submission.save()
     return redirect(after_post_url(tkn_str), permanent=False)
 
 

@@ -7,19 +7,9 @@ from django.utils import timezone
 from . import token
 
 
-class Submission(models.Model):
-    date = models.DateTimeField("date submitted")
-    submitter = models.CharField("submitter", max_length=256)
-    slug = models.CharField("unique slug", max_length=16)
-    # TODO(nknight): content field?
-
-    def __str__(self):
-        tmpl = "{} {}"
-        return tmpl.format(self.submitter, self.date)
-
-
 def default_new_id_code():
     return secrets.token_hex(4)
+
 
 class SubmissionTokenBody(models.Model):
     '''
@@ -28,12 +18,11 @@ class SubmissionTokenBody(models.Model):
         "ID Code",
         unique=True,
         max_length=32,
-       default=default_new_id_code
+       default=default_new_id_code,
     )
     issued_to = models.CharField("Issued To", max_length=128)
     issued_at = models.DateTimeField("Issued At", default=timezone.now)
     used = models.BooleanField("Used", default=False)
-    filename = models.CharField("Saved As", blank=True, max_length=16)
 
     def __str__(self):
         tmpl = "issued to {} at {} {}"
@@ -66,3 +55,18 @@ class SubmissionTokenBody(models.Model):
             # TODO(nknight): log the exception
             print(e)
             return None
+
+
+class Submission(models.Model):
+    date = models.DateTimeField("date submitted", default=timezone.now)
+    token_body = models.OneToOneField(
+        SubmissionTokenBody,
+        on_delete=models.CASCADE,
+    )
+    submitted_filename = models.CharField(max_length=256)
+    stored_filename = models.CharField(max_length=256)
+
+    def __str__(self):
+        tmpl = "{} {}"
+        submitter = self.token_body.issued_to
+        return tmpl.format(submitter, self.date)
