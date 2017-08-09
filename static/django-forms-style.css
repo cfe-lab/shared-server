@@ -1,0 +1,28 @@
+.djangoform table span.helptext {
+    font-size: 80%;
+    max-width: 30em;
+}
+
+.djangoform form td {
+    max-width: 26em;
+    padding: 0.4em;
+}
+
+.djangoform form th {
+    vertical-align: top;
+    padding: 0.4em;
+    width: 8em;
+    text-align: right;
+}
+
+
+.djangoform form > table {
+    border: 1px solid black;
+    margin: 1em 0;
+}
+
+
+.djangoform input {
+    font-size: 18pt;
+    
+}

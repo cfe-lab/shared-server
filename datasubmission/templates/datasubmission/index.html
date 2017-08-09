@@ -1,7 +1,16 @@
 {% extends "base.html" %}
+
+{% load static %}
+
+
+{% block headcontent %}
+<link rel="stylesheet" href="{% static 'django-forms-style.css' %}">
+{% endblock %}
+
+
 {% block content %}
 
-<h2>Securely Send Data to SHARED</h2>
+<h2>Securely Submit Data</h2>
 
 {% if token_used %}
 <p>
@@ -13,32 +22,36 @@
 
 
 {% if token_body and not token_used %}
-<form action="{% url 'datasubmission.index' %}?tkn={{token_body.token}}"
-      method="POST"
-      enctype="multipart/form-data"
->
+<div class="djangoform">
+  <form action="{% url 'datasubmission.index' %}?tkn={{token_body.token}}"
+        method="POST"
+        enctype="multipart/form-data"
+        >
     <table>
-        {{ fileform }}
+      {{ fileform }}
     </table>
     {% csrf_token %}
     <input type="submit" value="Submit" >
-</form>
-{% endif %}
+  </form>
+  {% endif %}
 
 
-{% if token_str and not token_used and not token_body %}
-<p>
-  This link isn't quite right. If you need help, contact
-  <a href="mailto:{{SUPPORT_EMAIL}}">{{SUPPORT_PERSON}}</a>.
-</p>
+  {% if token_str and not token_used and not token_body %}
+  <p>
+    This link isn't quite right. If you need help, contact
+    <a href="mailto:{{SUPPORT_EMAIL}}">{{SUPPORT_PERSON}}</a>.
+  </p>
+</div>
 {% endif %}
 
 {% if not token_str %}
 <p>
   You ned a special link to securely submit data to SHARED. If you
   need help, <a href="mailto:{{SUPPORT_EMAIL}}">email
-  {{SUPPORT_PERSON}}</a>.
+    {{SUPPORT_PERSON}}</a>.
 </p>
+
 {% endif %}
 
 {% endblock %}
+

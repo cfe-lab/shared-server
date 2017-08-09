@@ -1,0 +1,18 @@
+/* Global style rules (typography, colours, etc.) */
+
+body {
+    max-width: 40em;
+    margin: auto;
+    font-family: Lato, Arial, sans-serif;
+    font-size: 18pt;
+}
+
+h1 {
+    font-size: 22pt;
+    font-weight: normal;
+}
+
+h2 {
+    font-size: 20pt;
+    font-weight: normal;
+}

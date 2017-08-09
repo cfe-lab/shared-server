@@ -6,14 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SHARED</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'base.css' %}">
+
+    {% block headcontent %}
+    {% endblock %}
   </head>
   <body>
-    <nav class="navbar navbar-fixed-top">
-      <ul>
-        <li><a href="/">Home</a></li>
-      </ul>
-    </nav>
+    <header>
+      <h1>SHARED</h1>
+      <nav class="navbar navbar-fixed-top">
+        <ul>
+          <li><a href="/">Home</a></li>
+        </ul>
+      </nav>
+    </header>
     {% if messages %}
     <ul id="messages">
       {% for message in messages %}
@@ -24,5 +32,9 @@
 
     {% block content %}
     {% endblock %}
+
+    <footer>
+      Copyright 2017, BC Centre for Excellence in HIV/AIDS
+    </footer>
   </body>
 </html>
