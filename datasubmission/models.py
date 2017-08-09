@@ -53,7 +53,6 @@ class SubmissionTokenBody(models.Model):
             return token_body
         except Exception as e:
             # TODO(nknight): log the exception
-            print(e)
             return None
 
 

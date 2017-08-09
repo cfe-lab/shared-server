@@ -53,7 +53,6 @@ def validate_and_parse_id_code(token: str) -> typing.Optional[str]:
         else:
             return _parse_id_code(msg)
     except Exception as e:
-        print(e)
         # TODO(nknight): log the exception?
         return None
 
