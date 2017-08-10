@@ -18,7 +18,7 @@ class SubmissionTokenBody(models.Model):
         "ID Code",
         unique=True,
         max_length=32,
-       default=default_new_id_code,
+        default=default_new_id_code,
     )
     issued_to = models.CharField("Issued To", max_length=128)
     issued_at = models.DateTimeField("Issued At", default=timezone.now)

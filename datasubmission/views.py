@@ -66,7 +66,7 @@ def _handle_post(req, context, tkn_str, tkn_body):
 @require_http_methods(["GET", "POST"])
 def index(req):
     tkn_str = req.GET.get("tkn")
-    tkn_body = models.SubmissionTokenBody.retrieve_from_token(tkn_str)    
+    tkn_body = models.SubmissionTokenBody.retrieve_from_token(tkn_str)
     base_context = {
         'SUPPORT_PERSON': settings.SUPPORT_PERSON,
         'SUPPORT_EMAIL': settings.SUPPORT_EMAIL,
