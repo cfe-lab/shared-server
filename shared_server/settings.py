@@ -12,30 +12,38 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+
+class AppConfigError(Exception):
+    pass
+
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+SECRET_KEY = os.environ.get('SHARED_SERVER_SECRET_KEY', None)
+if SECRET_KEY is None:
+    raise AppConfigError(
+        'A cryptographic key in env var '
+        'SHARED_SERVER_SECRET_KEY is required.'
+    )
 
-# TODO(nknight): review this
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
+HMAC_KEY = os.environ.get('SHARED_SERVER_SECRET_KEY', None)
+if HMAC_KEY is None:
+    raise AppConfigError(
+        'A cryptographic key in env var '
+        'SHARED_SERVER_HMAC_KEY is required.'
+    )
 
-# TODO(nknight): Load these from env vars
-# SECURITY WARNING: keep the secret keys used in production secret!
-# These are dev/testing keys
-SECRET_KEY = 'cp6(1_vvocb4am9c9(2zv04)uuo-9m+kysls__#nc6mt*-i*$$'
-HMAC_KEY = 'bybcKg6SKULoIVNdYRyufz7ZDxgvF5j/qwN0qS+zhnLU'
+DEBUG_FLAG = os.environ.get('INSECURE_DEBUG')
+if DEBUG_FLAG:
+    DEBUG = True
+else:
+    DEBUG = False
 
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-# TODO(nknight): what should this be?
-ALLOWED_HOSTS = []
+# Expected to run in development mode or behind a reverse proxy with gunicorn
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -83,8 +91,6 @@ WSGI_APPLICATION = 'shared_server.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -94,8 +100,6 @@ DATABASES = {
 
 
 # Password validation
-# https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': ('django.contrib.auth.password_validation.'
@@ -115,21 +119,14 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.11/howto/static-files/
-
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
