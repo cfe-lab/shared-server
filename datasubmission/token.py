@@ -1,12 +1,16 @@
 import base64
 import hmac
 import json
+import logging
 import secrets
 import typing
 
 from django.conf import settings
 
 from . import models
+
+
+logger = logging.getLogger(__name__)
 
 
 def _message_digest(msg: bytes) -> str:
@@ -53,7 +57,8 @@ def validate_and_parse_id_code(token: str) -> typing.Optional[str]:
         else:
             return _parse_id_code(msg)
     except Exception as e:
-        # TODO(nknight): log the exception?
+        msg = "Exception while parsing/validating submission token: {}"
+        logger.info(msg.format(e))
         return None
 
 

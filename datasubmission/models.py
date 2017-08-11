@@ -1,3 +1,4 @@
+import logging
 import secrets
 
 from django.db import models
@@ -5,6 +6,9 @@ from django.urls import reverse
 from django.utils import timezone
 
 from . import token
+
+
+logger = logging.getLogger(__name__)
 
 
 def default_new_id_code():
@@ -45,14 +49,15 @@ class SubmissionTokenBody(models.Model):
 
     @classmethod
     def retrieve_from_token(cls, tkn):
+        id_code = token.validate_and_parse_id_code(tkn)
+        if id_code is None:
+            return None
         try:
-            id_code = token.validate_and_parse_id_code(tkn)
-            if id_code is None:
-                return None
             token_body = cls.objects.get(id_code__exact=id_code)
             return token_body
         except Exception as e:
-            # TODO(nknight): log the exception
+            msg = "Exception while retrieving token from ID code: {}"
+            logger.info(msg.format(e))
             return None
 
 
