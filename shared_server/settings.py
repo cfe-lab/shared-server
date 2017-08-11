@@ -26,7 +26,7 @@ if SECRET_KEY is None:
         'SHARED_SERVER_SECRET_KEY is required.'
     )
 
-HMAC_KEY = os.environ.get('SHARED_SERVER_SECRET_KEY', None)
+HMAC_KEY = os.environ.get('SHARED_SERVER_HMAC_KEY', None)
 if HMAC_KEY is None:
     raise AppConfigError(
         'A cryptographic key in env var '
