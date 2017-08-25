@@ -38,7 +38,7 @@ if os.environ.get('INSECURE_DEBUG', False):
     DEBUG = True
 
 # Expected to run in development mode or behind a reverse proxy with gunicorn
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'shared.cfenet.ubc.ca']
 
 
 # Security settings
