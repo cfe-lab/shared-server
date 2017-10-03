@@ -3,6 +3,7 @@
 
 from django.conf import settings
 
+
 def publication_settings(req):
     return {
         'MANUAL_URL': settings.MANUAL_URL,
@@ -10,4 +11,3 @@ def publication_settings(req):
         'SUPPORT_EMAIL': settings.SUPPORT_EMAIL,
         'SUBMISSION_EXAMPLE_PAGE': settings.SUBMISSION_EXAMPLE_PAGE,
     }
-
