@@ -93,6 +93,7 @@ TEMPLATES = [
                 'django.template.context_processors.static',
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
+                'shared_server.context_processors.publication_settings',
             ],
         },
     },
@@ -144,6 +145,10 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
+# Publication urls
+MANUAL_URL = 'https://shared.cfenet.ubc.ca/static/manual'
+SUBMISSION_EXAMPLE_PAGE = ('https://github.com/neganp/'
+                           'shared_submission_format_examples')
 
 # Support person
 SUPPORT_PERSON = 'Nathaniel Knight'
