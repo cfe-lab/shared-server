@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<h1>About</h1>
+
+<p>
+  The SHARED project is an international collaboration building a
+  database of the viral sequences, treatment histories, and health
+  outcomes related to the hepatitis C virus.
+</p>
+
+<p>
+  SHARED is based in Vancouver, Canada, at the University of British
+  Columbia.
+</p>
+
+<p>
+  For more details about the SHARED project's candidate cohort,
+  objectives, and participants, see the
+  <a href="{% static 'doc/SHARED Study Protocol.pdf' %}">SHARED Study
+  Protocol</a>. For more details about the information in the database,
+  consult the <a href="{% static 'manual' %}">SHARED Database Manual</a>.
+</p>
+
+{% endblock %}

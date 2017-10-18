@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<h1>Submit Data to SHARED</h1>
+
+<p>
+  This page outlines the process for contributing data to SHARED. You
+  can find more technical details in the
+  <a href="{% static 'manual/submission' %}">SHARED Database Manual</a>.  For more
+  details on the data sharing
+  agreement, <a href="/contact">contact</a> the project coordinator.
+</p>
+
+<h2>Data Sharing Process</h2>
+
+<ol>
+  <li>
+    Before starting the data submission process, you'll need ethics
+    approval to share your data and a data sharing agreement with UBC
+    (where where the project is hosted).
+  </li>
+
+  <li>
+    To facilitate data merging and minimise ambiguity, we ask that you
+    put your data in a standardised format. 
+    <ul>
+      <li>
+        For simpler studies, where there's only a single record per
+        participant, we ask that your data conforms to the
+        <a href="{% static 'manual/submission/flat_scheme.html' %}">
+          flat submission scheme
+        </a>.
+      </li>
+      <li>
+        For more complex studies, we ask you to use the
+        <a href="{% static 'manual/submission/multi_table_scheme.html' %}">
+          multi-table submission scheme
+        </a>.
+    </ul>
+  </li>
+
+  <li>
+    Once your data is formatted, create a .ZIP file with your patient
+    data and viral sequences.
+  </li>
+
+  <li>
+    The SHARED project coordinator will send you a unique data
+    submission link. Follow this link to a web-page where you can
+    securely submit your data.
+  </li>
+</ol>
+                                                     
+
+{% endblock %}

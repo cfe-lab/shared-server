@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<h1>Documents</h1>
+
+<h2>General</h2>
+<ul>
+  <li>
+    <a href="/static/doc/SHARED Study Protocol.pdf">
+      SHARED Study Protocol
+    </a>
+  </li>
+</ul>
+
+
+<h2>Data Submission</h2>
+
+<p>Information on formatting and submitting data to SHARED.</p>
+
+<ul>
+  <li>
+    <a href="{% static 'manual' %}">
+      SHARED Database Manual
+    </a>
+  </li>
+  <li>
+    <a href="https://github.com/neganp/shared_submission_format_examples">
+      Submission Format Example Data
+    </a>
+  </li>
+  <li>
+    Submission Templates:
+    <ul>
+      <li>
+        <a href="{% static 'docs/shared-simple-scheme-template.zip' %}">
+          Simple Scheme
+        </a>
+      </li>
+      <li>
+        <a href="{% static 'docs/shared-multi-table-scheme-template.zip' %}">
+          Multi-Table Scheme
+        </a>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+{% endblock %}

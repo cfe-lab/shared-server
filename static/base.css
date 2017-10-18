@@ -4,23 +4,40 @@ header > h1 {
     font-size: 20pt;
     margin: 0;
 }
+header > h2 {
+    font-size: 14pt;
+    margin: 0;
+    margin-bottom: 0.5em;
+}
 
 nav {
     font-size: 16pt;
-    background-color: blue;
     margin: 0;
+    padding: 0.2em;
+    border: 1px solid black;
 }
-
 nav a {
-    color: white;
+    display: inline-block;
     text-decoration: none;
+    transition: text-decoration 2s;
+    color:blue;
 }
-
-
+nav a:hover {
+    text-decoration: underline;
+}
+nav a:visisted {
+    color: blue;
+}
 nav ul {
-    padding: 0.4em;
     list-style-type: none;
+    padding: 0.2em;
     margin: 0;
+}
+nav li {
+    display: inline;
+    margin: 0.2em;
+    padding: 0.2em;
+    margin: 1px solid grey;
 }
 
 header {
