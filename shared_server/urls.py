@@ -34,7 +34,7 @@ urlpatterns = [
     static_page('index', path=r'^$'),
     static_page('about'),
     static_page('contact'),
-    static_page('contributing'),
+    static_page('submission'),
     static_page('documents'),
     url(
         r'^data_submission/',
