@@ -35,6 +35,7 @@ urlpatterns = [
     static_page('about'),
     static_page('contact'),
     static_page('contributing'),
+    static_page('documents'),
     url(
         r'^data_submission/',
         TemplateView.as_view(template_name='data_submission.html'),
