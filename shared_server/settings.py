@@ -146,7 +146,6 @@ STATICFILES_DIRS = [
 ]
 
 # Publication urls
-MANUAL_URL = 'https://shared.cfenet.ubc.ca/static/manual'
 SUBMISSION_EXAMPLE_PAGE = ('https://github.com/neganp/'
                            'shared_submission_format_examples')
 
