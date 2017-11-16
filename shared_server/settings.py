@@ -146,7 +146,7 @@ STATICFILES_DIRS = [
 ]
 
 # Publication urls
-SUBMISSION_EXAMPLE_PAGE = ('https://github.com/neganp/'
+SUBMISSION_EXAMPLE_PAGE = ('https://github.com/hcv-shared/'
                            'shared_submission_format_examples')
 
 # Support person
