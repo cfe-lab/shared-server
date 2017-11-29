@@ -6,8 +6,8 @@ install:
   - pip install -r requirements.txt -r test-requirements.txt
 script:
   - make dev_keys
-  - pycodestyle shared_server test
-  - flake8 shared_server test
+  - pycodestyle shared_server
+  - flake8 shared_server
   - . dev_keys && python manage.py test
 notifications:
   email:
