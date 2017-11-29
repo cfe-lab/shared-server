@@ -1,0 +1,14 @@
+language: python
+python:
+  - "3.6"
+install:
+  - pip install git+https://github.com/hcv-shared/shared-schema@master#egg=shared_schema
+  - pip install -r requirements.txt -r test-requirements.txt
+script:
+  - make dev_keys
+  - pycodestyle shared_server test
+  - flake8 shared_server test
+  - . dev_keys && python manage.py test
+notifications:
+  email:
+    on_failure: change
