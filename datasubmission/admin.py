@@ -17,7 +17,7 @@ admin.site.register(models.Submission, SubmissionAdmin)
 
 class SubmissionTokenBodyAdmin(admin.ModelAdmin):
     readonly_fields = ('token_url', 'id_code', 'issued_at')
-    fields = ('token_url', 'used', 'issued_to', 'issued_at', 'id_code')
+    fields = ('token_url', 'issued_to', 'issued_at', 'id_code')
 
 
 admin.site.register(models.SubmissionTokenBody, SubmissionTokenBodyAdmin)

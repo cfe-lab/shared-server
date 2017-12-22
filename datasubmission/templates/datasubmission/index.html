@@ -12,16 +12,7 @@
 
 <h2>Securely Submit Data</h2>
 
-{% if token_used %}
-<p>
-  This token has been successfully used to submit a file. If you need
-  to submit another file,
-  <a href="mailto:{{SUPPORT_EMAIL}}">email {{SUPPORT_PERSON }}</a>.
-</p>
-{% endif %}
-
-
-{% if token_body and not token_used %}
+{% if token_body %}
 <div class="djangoform">
   <form action="{% url 'datasubmission.index' %}?tkn={{token_body.token}}"
         method="POST"
@@ -33,25 +24,22 @@
     {% csrf_token %}
     <input type="submit" value="Submit" >
   </form>
-  {% endif %}
-
-
-  {% if token_str and not token_used and not token_body %}
-  <p>
-    This link isn't quite right. If you need help, contact
-    <a href="mailto:{{SUPPORT_EMAIL}}">{{SUPPORT_PERSON}}</a>.
-  </p>
 </div>
+{% endif %}
+
+{% if token_str and not token_body %}
+<p>
+  This link isn't quite right. If you need help, contact
+  <a href="mailto:{{SUPPORT_EMAIL}}">{{SUPPORT_PERSON}}</a>.
+</p>
 {% endif %}
 
 {% if not token_str %}
 <p>
-  You need a special link to securely submit data to SHARED. If you
+  You need a secure link to securely submit data to SHARED. If you
   need help, <a href="mailto:{{SUPPORT_EMAIL}}">email
-    {{SUPPORT_PERSON}}</a>.
+  {{SUPPORT_PERSON}}</a>.
 </p>
-
 {% endif %}
 
 {% endblock %}
-

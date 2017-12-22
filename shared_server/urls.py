@@ -19,7 +19,7 @@ def static_page(name, path=None):
     '''
     if path is None:
         path = "^{}$".format(name)
-    url_name = name
+    url_name = "shared_server.{}".format(name)
     template_name = name + ".html"
     return url(
         path,
