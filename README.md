@@ -15,3 +15,8 @@ Planned features:
 - Variation statistics in observed viral genomes
 - Published lab and bioinformatics best practices for HCV
 - Anonymous viral sequence analysis
+
+
+Documentation:
+
+- [Server Setup](./doc/SETUP.md)
