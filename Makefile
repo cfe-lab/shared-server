@@ -20,5 +20,3 @@ check: test
 
 dev_keys: make_dev_keys.py
 	python make_dev_keys.py > dev_keys
-
-
