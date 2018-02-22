@@ -20,3 +20,4 @@ Planned features:
 Documentation:
 
 - [Server Setup](./doc/SETUP.md)
+- [Development Setup](./doc/DEVELOPMENT.md)
