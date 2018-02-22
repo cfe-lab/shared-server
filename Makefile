@@ -3,6 +3,9 @@ PYTHON_SRC=$(find . \( -type d -path '*/venv' -prune \) -o -name '*.py')
 SHELL=/bin/bash
 VBIN=./venv/bin
 
+usage:
+	@echo "Targets: venv test check clean"
+
 clean:
 	rm -f to_webroot venv
 
