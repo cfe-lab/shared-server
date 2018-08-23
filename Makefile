@@ -7,10 +7,11 @@ usage:
 	@echo "Targets: venv test check clean"
 
 clean:
-	rm -f to_webroot venv
+	rm -rf to_webroot venv
 
 venv: requirements.txt test-requirements.txt
-	python3 -m venv venv
+	python3.6 -m venv venv  # Pin version for Django compatibility
+	${VBIN}/pip install --upgrade pip
 	${VBIN}/pip install -r requirements.txt -r test-requirements.txt
 	touch venv  # update time on venv dir
 
@@ -22,4 +23,4 @@ check: test
 	${VBIN}/flake8 shared_server
 
 dev_keys: make_dev_keys.py
-	python make_dev_keys.py > dev_keys
+	${VBIN}/python make_dev_keys.py > dev_keys
