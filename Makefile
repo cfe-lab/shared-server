@@ -15,12 +15,12 @@ venv: requirements.txt test-requirements.txt
 	${VBIN}/pip install -r requirements.txt -r test-requirements.txt
 	touch venv  # update time on venv dir
 
-test: dev_keys
+test: dev_keys venv
 	. dev_keys && ${VBIN}/python manage.py test
 
 check: test
 	${VBIN}/pycodestyle shared_server
 	${VBIN}/flake8 shared_server
 
-dev_keys: make_dev_keys.py
+dev_keys: make_dev_keys.py venv
 	${VBIN}/python make_dev_keys.py > dev_keys
