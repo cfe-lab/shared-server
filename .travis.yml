@@ -6,7 +6,7 @@ install:
   - pip install git+https://github.com/hcv-shared/shared-schema@master#egg=shared_schema
   - pip install -r requirements.txt -r test-requirements.txt
 script:
-  - make dev_keys
+  - python make_dev_keys.py > dev_keys
   - pycodestyle shared_server
   - flake8 shared_server
   - . dev_keys && python manage.py test
