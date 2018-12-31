@@ -37,8 +37,8 @@ It uses a few open-source components:
 ## Installing Python 3.6
 
 The SHARED server requires Python 3.6 (it makes use of
-the [secrets module][secrets-mod] for enhanced security), which must
-be built from scratch for the LTS version of Ubuntu.
+the new  [secrets module][secrets-mod] for enhanced security), which
+must be built from scratch for the LTS version of Ubuntu.
 
 [secrets-mod]: https://docs.python.org/3/library/secrets.html
 
@@ -94,8 +94,8 @@ changes to take effect.
 
 [so-restart-apache]: https://stackoverflow.com/questions/8270108/how-to-reload-apache-configuration-for-a-site-without-restarting-apache
 
-Our IT department manages all our TLS certificates, so they'll add
-some configuration files to the `httpd` directory and you shouldn't
+The CfE's IT department manages all our TLS certificates, so they'll
+add some configuration files to the `httpd` directory and you shouldn't
 have to worry about them.
 
 
@@ -103,7 +103,7 @@ have to worry about them.
 
 The appserver's dependencies should be installed in
 a [virtual environment][virtualenv-doc] to isolate it from any other
-Python projects that might be running on the same host.
+Python projects that might be running on the same server.
 
 [virtualenv-doc]: https://docs.python.org/3/tutorial/venv.html
 
@@ -158,7 +158,7 @@ new host**, after getting the appserver code.
 
 ## Running the Server
 
-This should be performed to **start or re-start** the appserver (e.g:
+This is how to **start or re-start** the appserver (e.g:
 when the host server is re-booted).
 
 If new static content (HTML, CSS, or JavaScript; Images; PDF
